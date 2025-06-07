@@ -71,7 +71,7 @@
           if (opts.label) input = document.querySelector(`input[aria-label="${opts.label}"]`);
           else if (opts.selector) input = document.querySelector(opts.selector);
           if (!input) {
-            logArea.value += `Combobox not found for ${opts.label || opts.selector}\n`;
+            logArea.value += `✗ Combobox not found for ${opts.label || opts.selector}\n`;
             return;
           }
           input.click();
@@ -84,14 +84,14 @@
               return setTimeout(attempt, 50);
             }
             if (!panel || !items.length) {
-              logArea.value += `${opts.label || opts.selector} panel/options missing\n`;
+              logArea.value += `✗ ${opts.label || opts.selector} panel/options missing\n`;
               return;
             }
             const match = Array.from(items).find(item =>
               item.querySelector(".q-item__label span")?.textContent.trim() === String(value)
             );
             (match || items[0]).click();
-            logArea.value += `${opts.label || opts.selector}: "${match ? value : "<first>"}"\n`;
+            logArea.value += `✓ ${opts.label || opts.selector}: "${match ? value : "<first>"}"\n`;
           })();
         }
   
@@ -132,16 +132,16 @@
       try {
         const container = document.querySelector('div.col.scroll.q-pa-md');
         if (!container) {
-          logArea.value += `Locations container not found\n`;
+          logArea.value += `✗ Locations container not found\n`;
           return;
         }
         const firstCard = container.querySelector('div.location-card');
         if (!firstCard) {
-          logArea.value += `No location cards found\n`;
+          logArea.value += `✗ No location cards found\n`;
           return;
         }
         firstCard.click();
-        logArea.value += `First location card clicked\n`;
+        logArea.value += `✓ First location card clicked\n`;
   
         setTimeout(() => {
           clickByText(logArea, "span.block", "Next");
@@ -160,9 +160,9 @@
         .find(el => el.textContent.trim() === text);
       if (el) {
         el.click();
-        logArea.value += `Clicked "${text}"\n`;
+        logArea.value += `✓ Clicked "${text}"\n`;
       } else {
-        logArea.value += `"${text}" not found for selector "${selector}"\n`;
+        logArea.value += `✗ "${text}" not found for selector "${selector}"\n`;
       }
     }
   
