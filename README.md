@@ -1,3 +1,9 @@
+# URL 
+https://github.com/mulefish/tampermonkey_QAHelperer_find_selectors
+
+# QUESTION?! Why is everything so weird here? The selectors are... 
+Mostly because Quasar, but some because the dev team did not give unique ids to the various widgets, but mostly quasar.
+
 # tampermonkey_QAHelperer_find_selectors
 Dynamically find selectors: Why? To help build out playwright scripts
 
